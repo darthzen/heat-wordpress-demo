@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<image name='Wordpress' displayname='Wordpress' schemaversion='5.2'>
+  <description type='system'>
+    <author>Admin User</author>
+    <contact>noemail@example.com</contact>
+    <specification>Minimal SLES 11 SP3</specification>
+  </description>
+  <preferences>
+    <type checkprebuilt='true' boot='vmxboot/suse-SLES11' fsnocheck='true' filesystem='ext3' format='qcow2' fsmountoptions='acl' image='vmx'>
+      <size unit='M' additive='false'>1024</size>
+    </type>
+    <version>0.0.9</version>
+    <packagemanager>zypper</packagemanager>
+    <rpm-check-signatures>false</rpm-check-signatures>
+    <rpm-force>false</rpm-force>
+    <boot-theme>studio</boot-theme>
+    <timezone>UTC</timezone>
+    <hwclock>localtime</hwclock>
+  </preferences>
+  <users group='root'>
+    <user name='root' pwd='$1$GUTcG1s1$wP3r2ven842do7hOXdeBU0' home='/root' shell='/bin/bash'/>
+  </users>
+  <packages type='image' patternType='onlyRequired'>
+    <opensusePattern name='ha_sles'/>
+    <opensusePattern name='lamp_server'/>
+    <package name='yast2-ntp-client'/>
+    <package name='ntp'/>
+    <package name='php53-gd'/>
+    <package name='php53-mbstring'/>
+    <package name='php53-pgsql'/>
+    <package name='php53-mysql'/>
+    <package name='zypp-plugin-spacewalk'/>
+    <package name='spacewalk-client-tools'/>
+    <package name='spacewalk-client-setup'/>
+    <package name='spacewalk-check'/>
+    <package name='apache2-mod_php53'/>
+    <package name='aaa_base'/>
+    <package name='bash'/>
+    <package name='bootsplash'/>
+    <package name='branding-SLES'/>
+    <package name='coreutils'/>
+    <package name='cracklib-dict-full'/>
+    <package name='device-mapper'/>
+    <package name='dhcpcd'/>
+    <package name='e2fsprogs'/>
+    <package name='elfutils'/>
+    <package name='filesystem'/>
+    <package name='glib2-branding-SLES'/>
+    <package name='glibc'/>
+    <package name='grub'/>
+    <package name='ifplugd'/>
+    <package name='initviocons'/>
+    <package name='insserv'/>
+    <package name='iputils'/>
+    <package name='irqbalance'/>
+    <package name='kbd'/>
+    <package name='kernel-default'/>
+    <package name='klogd'/>
+    <package name='less'/>
+    <package name='login'/>
+    <package name='mdadm'/>
+    <package name='mkinitrd'/>
+    <package name='module-init-tools'/>
+    <package name='ncurses-utils'/>
+    <package name='nfs-client'/>
+    <package name='openssh'/>
+    <package name='openssl-certs'/>
+    <package name='pam'/>
+    <package name='pam-modules'/>
+    <package name='procps'/>
+    <package name='pwdutils'/>
+    <package name='release-notes-sles'/>
+    <package name='rpcbind'/>
+    <package name='rpm'/>
+    <package name='sles-release'/>
+    <package name='sles-release-DVD'/>
+    <package name='suse-build-key'/>
+    <package name='suse-sam'/>
+    <package name='suseRegister'/>
+    <package name='sysconfig'/>
+    <package name='syslog-ng'/>
+    <package name='sysvinit'/>
+    <package name='tar'/>
+    <package name='timezone'/>
+    <package name='vim'/>
+    <package name='vim-base'/>
+    <package name='w3m'/>
+    <package name='zypper'/>
+    <archive name='bootsplash.tar' bootinclude='true'/>
+  </packages>
+  <packages type='bootstrap'>
+    <package name='filesystem'/>
+    <package name='glibc-locale'/>
+  </packages>
+  <repository type='rpm-md'>
+    <source path='{SLE11-HAE-SP3-Updates}'/>
+  </repository>
+  <repository type='rpm-md'>
+    <source path='{SLES 11 SP3 x86_64}'/>
+  </repository>
+  <repository type='rpm-md'>
+    <source path='{SLE 11 SP3 SDK x86_64}'/>
+  </repository>
+  <repository type='rpm-md'>
+    <source path='{SLES 11 SP3 Updates x86_64}'/>
+  </repository>
+  <repository type='rpm-md'>
+    <source path='{SLE11-HAE-SP3-Pool}'/>
+  </repository>
+  <repository type='rpm-md'>
+    <source path='{SLE 11 SP3 SDK Updates x86_64}'/>
+  </repository>
+</image>

@@ -1,0 +1,38 @@
+#!/bin/bash -e
+#
+# This script is executed at the end of appliance creation.  Here you can do
+# one-time actions to modify your appliance before it is ever used, like
+# removing files and directories to make it smaller, creating symlinks,
+# generating indexes, etc.
+#
+# The 'kiwi_type' variable will contain the format of the appliance
+# (oem = disk image, vmx = VMware, iso = CD/DVD, xen = Xen).
+#
+
+# read in some variables
+. /studio/profile
+
+# read in KIWI utility functions
+. /.kconfig
+
+#======================================
+# Prune extraneous files
+#--------------------------------------
+# Remove all documentation
+docfiles=`find /usr/share/doc/packages -type f |grep -iv "copying\|license\|copyright"`
+rm -f $docfiles
+rm -rf /usr/share/info
+rm -rf /usr/share/man
+
+baseStripLocales $kiwi_language
+
+rm -fv /etc/zypp/repos.d/*
+zypper addrepo -t rpm-md http://192.168.124.10:8091/repos/SLES11-SP3-Pool/ SLES11-SP3-Pool
+zypper addrepo -t rpm-md -f http://192.168.124.10:8091/repos/SLES13-SP1-Updates/ SLES11-SP3-Updates
+
+echo "192.168.126.253 manager.ash4d.com manager" >> /etc/hosts
+rm -fv /etc/YaST2/licenses/license.txt
+chkconfig --add apache2
+chkconfig --add ntp
+chmod -R a+w /srv/www/htdocs
+exit 0
